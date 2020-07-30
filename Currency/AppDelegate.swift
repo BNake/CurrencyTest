@@ -74,8 +74,7 @@ extension AppDelegate {
     
     //MARK: Setup
     private func setUpNavigationBar() {
-//        UINavigationBar.appearance().tintColor = Global.backgroundColor()
-        UINavigationBar.appearance().barTintColor = Global.backgroundColor()
+        UINavigationBar.appearance().barTintColor = Global.navigationBackgroundColor()
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black,.font : Global.boldFont(size: 20.width)]
     }

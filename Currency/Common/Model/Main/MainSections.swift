@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import XLPagerTabStrip
+
 enum MainSections: Int, CaseCountable {
     
     case atfbankCurrency
@@ -17,14 +19,14 @@ enum MainSections: Int, CaseCountable {
         return MainHeaderSectionView(type: self)
     }
     
-    var title: String {
+    var title: IndicatorInfo {
         switch self {
         case .atfbankCurrency:
-            return "АТФ"
+            return IndicatorInfo(title: "АТФ")
         case .altynCurrency:
-            return "Алтын-ай"
+            return IndicatorInfo(title: "Алтын-ай")
         case .halkCurrency:
-            return "Халык"
+            return IndicatorInfo(title: "Халык")
         }
     }
     

@@ -15,10 +15,8 @@ class AppCoordinator: Coordinator {
     func start() {
         guard let window          = self.window else { return }
         window.backgroundColor    = Global.backgroundColor()
-        let clientWorker          = MainWorker()
-        let mainViewModel         = MainViewModel(clientWorker: clientWorker)
-        let mainViewcontroller    = MainViewController(viewModel: mainViewModel)
-        self.rootViewController   = UINavigationController(rootViewController: mainViewcontroller)
+        let baseViewcontroller    = BaseViewController()
+        self.rootViewController   = UINavigationController(rootViewController: baseViewcontroller)
         window.rootViewController = rootViewController
         self.window?.makeKeyAndVisible()
     }

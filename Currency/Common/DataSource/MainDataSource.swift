@@ -30,7 +30,7 @@ extension MainDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let viewModel = self.viewModel else { return UITableViewCell() }
-        guard let item = viewModel.item(index: indexPath.row, section: indexPath.section) else { return UITableViewCell() }
+        guard let item = viewModel.item(index: indexPath.row) else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: MainCell.cellIdentifier(), for: indexPath) as! MainCell
         cell.configure(item: item)
         return cell

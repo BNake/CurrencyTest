@@ -15,6 +15,10 @@ class Global {
         else { return "" }
     }
     
+    class func navigationBackgroundColor() -> UIColor {
+        return #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    }
+    
     class func backgroundColor() -> UIColor {
         return #colorLiteral(red: 0.9607843137, green: 0.9647058824, blue: 0.968627451, alpha: 1)
     }

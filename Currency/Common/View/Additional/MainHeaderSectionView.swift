@@ -45,7 +45,6 @@ class MainHeaderSectionView: UIView {
     convenience init(type: MainSections) {
         self.init()
         self.type = type
-        self.titleLbl.text = type.title
     }
     
     override init(frame: CGRect) {
@@ -63,6 +62,7 @@ extension MainHeaderSectionView {
     
     //MARK: - Set up
     private func setUp() {
+        backgroundColor = Global.backgroundColor()
         self.addSubview(labelStack)
         labelStack.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview().inset(16.width)
