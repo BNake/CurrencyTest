@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>altynCurrency</key>
+	<string>https://altyn-i.kz/api/exchange-rate/by-currency/</string>
+	<key>atfbankCurrency</key>
+	<string>https://www.atfbank.kz/api/public/currency_rate/</string>
+	<key>halkCurrency</key>
+	<string>https://back.halykbank.kz/common/currency-history</string>
+</dict>
+</plist>
