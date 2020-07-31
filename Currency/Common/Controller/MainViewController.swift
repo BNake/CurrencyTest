@@ -36,7 +36,7 @@ extension MainViewController {
     
     //MARK: - Load data
     private func loadData() {
-        viewModel.getData { [weak self] in
+        viewModel.getSectionData { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.customView.reloadData()
             strongSelf.customView.stopRefreshing()

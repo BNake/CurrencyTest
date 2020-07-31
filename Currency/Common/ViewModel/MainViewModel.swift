@@ -49,7 +49,7 @@ extension MainViewModel {
     }
     
     //MARK: - Fetch
-    public func getData(completion: @escaping () -> Void) {
+    public func getSectionData(completion: @escaping () -> Void) {
 
         switch sectionType{
         case .altynCurrency:
@@ -104,7 +104,6 @@ private extension MainViewModel {
     
     func getHalkCurrency(completion: @escaping () -> Void){
         clientWorker.halkCurrency(endPoint: MainEndPoint.halkCurrency) { (result) in
-            Alert.shared.getRoot()?.stopActivityIndicator()
             switch result {
             case .success(let data):
                 switch data.data.currencyHistory {
@@ -113,8 +112,6 @@ private extension MainViewModel {
                 case .array(let array):
                     self.valuts = array[0].privatePersons.map({ HalykbankCurrencyModelResponse(priceSell: $0.value.sell, priceBuy: $0.value.buy, valcode: String($0.key.prefix(3)), valcodebas: String($0.key.suffix(3))) })
                 }
-                
-                
                 completion()
             case .failure(let error):
                 print(error.localizedDescription)
