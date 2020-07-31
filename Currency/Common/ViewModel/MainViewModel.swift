@@ -5,14 +5,12 @@ import UIKit
 class MainViewModel {
     
     //MARK: - Properties
-    private let dispatchGroup : DispatchGroup = DispatchGroup()
     private var valuts        : [CurrencyResponse] = []
-    private var clientWorker  : MainWorker!
+    private var clientWorker  : MainWorker = MainWorker()
     private var sectionType   : MainSections!
     
     //MARK: - Init
-    init(clientWorker: MainWorker, sectionType: MainSections) {
-        self.clientWorker = clientWorker
+    init(sectionType: MainSections) {
         self.sectionType  = sectionType
     }
 }
@@ -20,9 +18,9 @@ class MainViewModel {
 extension MainViewModel {
     
     //MARK: - Data source
-    func getDataSource(didSelectItemHandler: @escaping MainDataSource.MainSelectHandler) -> MainDataSource {
+    func getDataSource() -> MainDataSource {
         Alert.shared.getRoot()?.startActivityIndicator()
-        return MainDataSource(with: self, didSelectItemHandler: didSelectItemHandler)
+        return MainDataSource(with: self)
     }
     
     func itemSectionInfo() -> IndicatorInfo {
@@ -57,23 +55,20 @@ extension MainViewModel {
         case .altynCurrency:
             self.getAltynCurrency {
                 print("getAltynCurrency")
+                completion()
             }
         case .atfbankCurrency:
             self.getAtfbankCurrency {
                 print("getAtfbankCurrency")
+                completion()
             }
         case .halkCurrency:
             self.getHalkCurrency {
                 print("getHalkCurrency")
+                completion()
             }
         default:
             break
-        }
-        
-        self.dispatchGroup.notify(queue: .main) {
-            print(self.valuts)
-            Alert.shared.getRoot()?.stopActivityIndicator()
-            completion()
         }
         
     }
@@ -82,8 +77,8 @@ extension MainViewModel {
 //MARK: - Fetch Func
 private extension MainViewModel {
     func getAltynCurrency(completion: @escaping () -> Void){
-        self.dispatchGroup.enter()
         clientWorker.altynCurrency(endPoint: MainEndPoint.altynCurrency) { (result) in
+            Alert.shared.getRoot()?.stopActivityIndicator()
             switch result {
             case .success(let data):
                 self.valuts = data
@@ -91,13 +86,12 @@ private extension MainViewModel {
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            self.dispatchGroup.leave()
         }
     }
     
     func getAtfbankCurrency(completion: @escaping () -> Void){
-        self.dispatchGroup.enter()
         clientWorker.atfbankCurrency(endPoint: MainEndPoint.atfbankCurrency) { (result) in
+            Alert.shared.getRoot()?.stopActivityIndicator()
             switch result {
             case .success(let data):
                 self.valuts = data.data
@@ -105,13 +99,12 @@ private extension MainViewModel {
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            self.dispatchGroup.leave()
         }
     }
     
     func getHalkCurrency(completion: @escaping () -> Void){
-        self.dispatchGroup.enter()
         clientWorker.halkCurrency(endPoint: MainEndPoint.halkCurrency) { (result) in
+            Alert.shared.getRoot()?.stopActivityIndicator()
             switch result {
             case .success(let data):
                 switch data.data.currencyHistory {
@@ -126,7 +119,6 @@ private extension MainViewModel {
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            self.dispatchGroup.leave()
         }
     }
 }

@@ -3,14 +3,11 @@ import UIKit
 class MainDataSource: NSObject {
     
     //MARK: - Properties
-    typealias MainSelectHandler = () -> ()
     weak private var viewModel  : MainViewModel?
-    var didSelectItemHandler    : MainSelectHandler?
     
     //MARK: - Init
-    init(with viewModel: MainViewModel,didSelectItemHandler:@escaping MainSelectHandler) {
+    init(with viewModel: MainViewModel) {
         self.viewModel = viewModel
-        self.didSelectItemHandler = didSelectItemHandler
     }
 }
 
@@ -56,9 +53,5 @@ extension MainDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let viewModel = self.viewModel else { return nil }
         return viewModel.headerSection(section: section)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectItemHandler?()
     }
 }

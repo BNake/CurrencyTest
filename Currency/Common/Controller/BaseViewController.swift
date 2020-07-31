@@ -15,9 +15,9 @@ class BaseViewController: TwitterPagerTabStripViewController {
     
     // MARK: - TwitterPagerTabStripViewController methods
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let altynCurrencyViewModel    = MainViewModel(clientWorker: MainWorker(), sectionType: .altynCurrency)
-        let atfbankCurrencyViewModel  = MainViewModel(clientWorker: MainWorker(), sectionType: .atfbankCurrency)
-        let halkCurrencyViewModel     = MainViewModel(clientWorker: MainWorker(), sectionType: .halkCurrency)
+        let altynCurrencyViewModel    = MainViewModel(sectionType: .altynCurrency)
+        let atfbankCurrencyViewModel  = MainViewModel(sectionType: .atfbankCurrency)
+        let halkCurrencyViewModel     = MainViewModel(sectionType: .halkCurrency)
         
         let altynCurrency             = MainViewController(viewModel: altynCurrencyViewModel)
         let atfbankCurrency           = MainViewController(viewModel: atfbankCurrencyViewModel)

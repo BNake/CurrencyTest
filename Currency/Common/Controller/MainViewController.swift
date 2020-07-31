@@ -45,7 +45,7 @@ extension MainViewController {
     
     //MARK: - Set up
     private func setUp() {
-        dataSource               = viewModel.getDataSource(didSelectItemHandler: didSelectItem())
+        dataSource               = viewModel.getDataSource()
         customView.delegate      = dataSource
         customView.dataSource    = dataSource
         customView.pullToRefresh = { [weak self] in
@@ -56,15 +56,6 @@ extension MainViewController {
     
     private func setUpNavigationBar() {
         title = "Валюта"
-    }
-    
-    //MARK: - Action
-    private func didSelectItem() -> MainDataSource.MainSelectHandler {
-        return { [weak self] in
-            if let `self` = self {
-                print("press")
-            }
-        }
     }
 }
 
