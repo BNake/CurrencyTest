@@ -1,5 +1,5 @@
 # CurrencyTest
 
-<img src="v.mov"
+<img src="v.gif"
 alt="Video"
 height="400">
