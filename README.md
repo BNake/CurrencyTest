@@ -1,5 +1,5 @@
 # CurrencyTest
 
-[<img src="v.mov"
+<img src="v.mov"
 alt="Video"
-height="400">]
+height="400">
